@@ -1,0 +1,116 @@
+Flash Loan = AAVE protocol
+
+Insurance 
+
+Token Swipe
+
+====================================================================================
+
+Etherium Libraries = - Standarts - 
+
+
+-> At the start of every smart contract, you will see the -PRAGMA- version declared.If you are wrking with someone else code it is important that you are using the same compiler version.
+
+====================================================================================
+
+uint256 = 2**256 - 1
+int256 = -2**255  to 2**255 - 1
+
+The concept of “undefined” or “null” values does not exist in Solidity, but newly declared variables always have a default value dependent on its type.	
+
+
+====================================================================================
+Value Types :
+	
+address: It is the variable where we keep the wallet addresses. Fixed size 20 bytes
+
+bytes32: It is a variable that holds string values as hexadecimal. 
+
+
+There are 3 types of variables in Solidity:---------
+
+1.State Variables
+
+  Declared outside the function.
+  Stored on the blockchain.
+
+2.Local Variables:
+
+  Not stored on the blockchain.
+  Declared inside the function.
+
+3.Global:
+
+  Blockchain related variables.
+
+====================================================================================
+
+READ ONLY FUNCTIONS ======
+
+view : 
+    int public a = 4;
+    function get() external view returns(uint){
+        return a;   >==> reads state variables
+    }
+
+pure : 
+    function add(int x , int b) external pure returns(int) {
+        return x + b;  >==> reads state variables
+    }
+
+
+====================================================================================
+VARIABLES ====
+
+Constant ----->
+
+Immutable ------> Also it can be changed in the constructor
+
+====================================================================================
+MAPINGS ====
+
+mapping(address => uint) public balances; >===> balances[address] = uint
+
+
+
+====================================================================================
+MEMORY-STORAGE ====
+
+MEMORY = temporary memory
+STORAGE = datas are storaged on smart contract
+
+====================================================================================
+FUNCTION MODIFIER ====
+
+Modifiers can be used to:
+
+Restrict access
+Validate inputs
+Guard against reentrancy hack
+
+modifier Name {....}
+
+====================================================================================
+ERRORS ==========
+require ->  is used to validate inputs and conditions before execution.
+revert ->  is similar to require.
+assert  -> is used to check for code that should never be false. Failing assertion probably means that there is a bug.
+
+** Using the above three error types help us save gas **
+
+====================================================================================
+LIBRARIES ==========
+
+** A library has functions that can be called by other contracts. Deploying a common code by creating a library reduces the gas cost. 
+
+====================================================================================
+DATA LOCATIONS ==========
+
+There are 3 types of memory locations (data locations) in the EVM:
+
+- storage: Stored on the blockchain.
+- memory: Stored in a memory. Function is called and deleted as soon as the function is used as needed.
+- calldata: Stored in the call (transaction) when calling the function (msg.data). It can only be read.
+When using reference types such as bytes, string, uint256[], struct in functions, it should be specified from which memory area these data will be taken.
+
+
