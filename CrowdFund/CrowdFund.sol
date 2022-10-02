@@ -33,7 +33,7 @@ contract CrowdFund {
     }
 
     IERC20 public immutable token;
-    uint public count = 0;
+    uint public count;
     mapping(uint => Campaign) public campaigns;
     mapping(uint => mapping(address => uint)) public pledgedAmount;
 
@@ -51,7 +51,9 @@ contract CrowdFund {
         require(_endAt >= _startAt, "ERROR : end at < start at");
         require(_endAt >= block.timestamp + 90 days, "ERROR: end at greater than max duration");
 
-        campaigns[count] = Campaign({
+       count += 1;
+       
+       campaigns[count] = Campaign({
             creator: msg.sender,
             pledged: 0,
             goal: _goal,
@@ -61,8 +63,7 @@ contract CrowdFund {
         });    
 
         emit Launch(count, msg.sender, _goal, _startAt, _endAt);  
-
-        count += 1;
+        
     } 
 
 
