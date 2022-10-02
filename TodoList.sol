@@ -9,7 +9,9 @@ contract TodoList {
     }
 
     Todo[] public todos;
-
+    
+    //TODO List Functions
+    
     function create(string calldata _text) external {
         todos.push(Todo({
             text : _text,
